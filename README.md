@@ -1,2 +1,3 @@
 # Libreria-Iverson
-Proyecto Final de Programacion Web,     Iverson Vargas 2024-2512
+Proyecto Final de la materia Programacion Web  con el maestro Daniel Parra
+Iverson Vargas 2024-2512
