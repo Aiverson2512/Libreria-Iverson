@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// Leer y sanear datos del formulario (método POST)
+// Leer y sanear datos del formulario 
 $nombre     = trim($_POST['nombre']     ?? '');
 $correo     = trim($_POST['correo']     ?? '');
 $asunto     = trim($_POST['asunto']     ?? '');

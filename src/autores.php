@@ -161,7 +161,7 @@ require '_header.php';
 </div>
 
 <script>
-// ── Buscador (tu código original) ──
+// ── Buscador 
 const buscadorAutor   = document.getElementById('buscadorAutor');
 const colsAutores     = document.querySelectorAll('.tarjeta-autor-col');
 const contadorAutores = document.getElementById('contadorAutores');

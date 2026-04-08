@@ -200,7 +200,7 @@ require '_header.php';
 </div>
 
 <script>
-// ── Búsqueda y filtro (tu código original, sin cambios) ──
+// ── Búsqueda y filtro 
 const buscador    = document.getElementById('buscador');
 const filtroTipo  = document.getElementById('filtroTipo');
 const filas       = document.querySelectorAll('#tablaLibros tbody tr');
