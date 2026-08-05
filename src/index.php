@@ -61,7 +61,8 @@ require '_header.php';
         $tipos = array_unique(array_column($libros, 'tipo'));
         foreach ($tipos as $t) {
             $nombreTraducido = $traduccionGeneros[$t] ?? $t;
-            echo "<option value='$nombreTraducido'>$nombreTraducido</option>";
+            $nombreEscapado = htmlspecialchars($nombreTraducido, ENT_QUOTES, 'UTF-8');
+            echo "<option value=\"$nombreEscapado\">$nombreEscapado</option>";
         }
         ?>
       </select>
@@ -96,6 +97,7 @@ require '_header.php';
           $tipo    = $libro['tipo'];
           $color   = $coloresTipo[$tipo] ?? 'secondary';
           $genero  = $traduccionGeneros[$tipo] ?? $tipo;
+          $generoHtml = htmlspecialchars($genero, ENT_QUOTES, 'UTF-8');
           $precio  = $libro['precio']       !== null ? '$' . number_format($libro['precio'], 2) : 'N/D';
           $ventas  = $libro['total_ventas'] !== null ? number_format($libro['total_ventas'])     : 'N/D';
           $avance  = $libro['avance']       !== null ? '$' . number_format($libro['avance'], 2)  : 'N/D';
@@ -107,7 +109,7 @@ require '_header.php';
         <!-- data-* guarda los datos para el modal -->
         <tr class="fila-libro" style="cursor: pointer;"
             data-titulo="<?= htmlspecialchars($libro['titulo']) ?>"
-            data-genero="<?= $genero ?>"
+            data-genero="<?= $generoHtml ?>"
             data-color="<?= $color ?>"
             data-precio="<?= $precio ?>"
             data-ventas="<?= $ventas ?>"
@@ -123,7 +125,7 @@ require '_header.php';
             <br><small class="text-muted"><?= htmlspecialchars(mb_substr($libro['notas'], 0, 80)) ?>…</small>
             <?php endif; ?>
           </td>
-          <td><span class="badge bg-<?= $color ?> badge-tipo"><?= $genero ?></span></td>
+          <td><span class="badge bg-<?= $color ?> badge-tipo"><?= $generoHtml ?></span></td>
           <td><?= $precio ?></td>
           <td><?= $ventas ?></td>
           <td><small><?= $autores ?></small></td>

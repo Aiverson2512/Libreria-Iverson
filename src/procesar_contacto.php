@@ -24,6 +24,11 @@ if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
+if (mb_strlen($nombre) > 100 || mb_strlen($correo) > 100 || mb_strlen($asunto) > 150 || mb_strlen($comentario) > 500) {
+    header('Location: contacto.php?estado=error&mensaje=' . urlencode('Uno o más campos exceden la longitud permitida.'));
+    exit;
+}
+
 // Insertar en la tabla contacto usando PDO con sentencia preparada
 try {
     $sql = "INSERT INTO contacto (fecha, correo, nombre, asunto, comentario)
