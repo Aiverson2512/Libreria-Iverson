@@ -24,5 +24,5 @@ Tiene su cuenta de prueba para iniciar una automatizacion, selenium la escribe a
 
 El reporte se crea en su carpeta aparte dentro del folder principal llamada 'reports'
 
-Las pruebas cubren todas las historias de usuario.
+Las pruebas cubren todas las historias de usuario.--
 
