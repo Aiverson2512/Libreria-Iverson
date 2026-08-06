@@ -149,3 +149,36 @@ def test_crear_libro_sin_datos_muestra_error(admin):
     admin.get(f'{BASE_URL}/admin/crear.php')
     _enviar_formulario(admin)
     assert 'El título, tipo, editorial, al menos un autor y la fecha de publicación son obligatorios' in admin.page_source
+
+
+def test_login_con_campos_vacios_muestra_error(driver):
+    driver.get(f'{BASE_URL}/login.php')
+    _enviar_formulario(driver)
+    assert 'Por favor, complete todos los campos' in driver.page_source
+
+
+def test_crear_libro_con_mas_de_9_autores_rechazado(admin):
+    admin.get(f'{BASE_URL}/admin/crear.php')
+    admin.find_element(By.ID, 'titulo').send_keys(TITULO)
+    admin.find_element(By.ID, 'tipo').send_keys('psychology')
+    Select(admin.find_element(By.ID, 'id_pub')).select_by_value('1389')
+    autores = Select(admin.find_element(By.ID, 'autores'))
+    for indice in range(10):
+        autores.select_by_index(indice)
+    admin.execute_script("document.getElementById('fecha_pub').value = '2025-01-15'")
+    _enviar_formulario(admin)
+    assert 'Puedes asignar un máximo de 9 autores por libro' in admin.page_source
+
+
+def test_crear_autor_con_codigo_postal_invalido_rechazado(admin):
+    admin.get(f'{BASE_URL}/admin/autores.php')
+    admin.find_element(By.ID, 'nombre').send_keys(f'Ana{MARCA}')
+    admin.find_element(By.ID, 'apellido').send_keys(f'Limite{MARCA}')
+    admin.find_element(By.ID, 'telefono').send_keys('8095550000')
+    admin.find_element(By.ID, 'direccion').send_keys('Calle 2')
+    admin.find_element(By.ID, 'ciudad').send_keys('Santiago')
+    admin.find_element(By.ID, 'estado').send_keys('ST')
+    admin.find_element(By.ID, 'pais').send_keys('DOM')
+    admin.find_element(By.ID, 'cod_postal').send_keys('ABC')
+    _enviar_formulario(admin)
+    assert 'El código postal solo puede contener números' in admin.page_source
