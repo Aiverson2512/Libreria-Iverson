@@ -110,7 +110,7 @@ $rutaRaiz = str_contains($_SERVER['SCRIPT_NAME'], '/admin/') ? '../' : '';
 
     .table { --bs-table-bg: transparent; --bs-table-hover-bg: #f9ede8; }
     .table thead, .table-dark { background: var(--ink) !important; color: white; }
-    .table thead th { font-size: .77rem; letter-spacing: .06em; text-transform: uppercase; }
+    .table thead th { font-size: .77rem; letter-spacing: .06em; text-transform: uppercase; color: #fff !important; }
     .table > :not(caption) > * > * { border-bottom-color: var(--line); padding: .9rem .75rem; }
 
     .badge-tipo {
