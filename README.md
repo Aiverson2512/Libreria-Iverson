@@ -1,6 +1,6 @@
-# Libreria-Iverson
+# Libreria-Iverson Online
 # Mi nombre es Iverson Vargas, matricula 2024-2512
-Esta tarea es para la materia de Programacion lll de el maestro Kelyn Tejada. 
+Este proyecto final es para la materia de Programacion lll de el maestro Kelyn Tejada. 
 
 
 Este es un proyecto que tenia el cuatri pasado que es una Libreria Online construida en php con mysql, panel admin, y lo que corresponde en esta asignacion que son las pruebas automatizadas con selenium

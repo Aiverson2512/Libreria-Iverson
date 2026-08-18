@@ -16,7 +16,8 @@ def test_autores_se_muestran(driver):
 
 def test_contacto_requiere_campos(driver):
     driver.get(f'{BASE_URL}/contacto.php')
-    driver.find_element(By.ID, 'btnEnviar').click()
+    boton = driver.find_element(By.ID, 'btnEnviar')
+    driver.execute_script('arguments[0].click();', boton)
     assert driver.find_element(By.ID, 'nombre').get_attribute('required')
 
 
